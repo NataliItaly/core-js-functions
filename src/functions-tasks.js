@@ -18,7 +18,7 @@
  *
  */
 function getCurrentFunctionName() {
-  throw new Error('Not implemented');
+  return getCurrentFunctionName.name;
 }
 
 /**
@@ -32,8 +32,8 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(/* func */) {
-  throw new Error('Not implemented');
+function getFunctionBody(func) {
+  return func ? String(func) : '';
 }
 
 /**
@@ -50,8 +50,8 @@ function getFunctionBody(/* func */) {
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  return [...funcs].map((el, i) => i);
 }
 
 /**
@@ -70,8 +70,8 @@ function getArgumentsCount(/* funcs */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (base) => base ** exponent;
 }
 
 /**
@@ -87,11 +87,17 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom(/* ...coefficients */) {
-  throw new Error('Not implemented');
+function getPolynom(...coefficients) {
+  if (coefficients.length === 0) return null;
+  return (x) => {
+    const reversedCoef = [...coefficients].reverse();
+    let res = 0;
+    for (let i = 0; i < reversedCoef.length; i += 1) {
+      res += reversedCoef[i] * x ** i;
+    }
+    return res;
+  };
 }
-
-
 
 /**
  * Memoizes passed function and returns function
@@ -126,7 +132,7 @@ function memoize(/* func */) {
  * }, 2);
  * retryer() => 2
  */
-function retry(/* func, attempts */) {
+function retry(/*func, attempts */) {
   throw new Error('Not implemented');
 }
 
