@@ -132,7 +132,7 @@ function memoize(/* func */) {
  * }, 2);
  * retryer() => 2
  */
-function retry(/*func, attempts */) {
+function retry(/* func, attempts */) {
   throw new Error('Not implemented');
 }
 
